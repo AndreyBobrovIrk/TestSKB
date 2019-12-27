@@ -38,6 +38,15 @@ const char& MyString::operator[] (size_t a_pos) const
   return *(m_p_str + a_pos);
 }
 
+//MyString& Insert(int a_index, const char* a_value)
+//{
+//}
+
+//MyString& Insert(int a_index, const MyString& a_value)
+//{
+//
+//}
+
 std::ostream& operator << (std::ostream& a_stream, MyString &a_value)
 {
 	for (int i = 0; i < a_value.size(); i++) {
@@ -80,8 +89,19 @@ MyString& MyString::operator=(const MyString& a_obj)
   return *this;
 }
 
-//MyString& MyString::operator+(MyString& a_value)
-//{
-//
-//}
+MyString& MyString::operator+(const char* a_value)
+{
+  size_t size = m_size + strlen(a_value);
 
+  char* tmp = new char[size];
+
+  _snprintf_s(tmp, size, size, "%s%s", m_p_str, a_value);
+
+  MyString *result = new MyString(tmp);
+  return *result;
+}
+
+MyString& MyString::operator+(MyString& a_value)
+{
+  return operator+(a_value.m_p_str);
+}

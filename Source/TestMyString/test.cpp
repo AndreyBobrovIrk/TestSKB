@@ -2,7 +2,7 @@
 
 #include "..\MyString\MyString.h"
 
-TEST(TestMyString, Test1) {
+TEST(TestMyString, Init) {
   MyString str1("String1");
   EXPECT_EQ(str1, "String1");
   EXPECT_EQ(str1.size(), 7);
@@ -40,6 +40,26 @@ TEST(TestMyString, Test1) {
   EXPECT_EQ(str1[4], '5');
   EXPECT_EQ(str1[5], '\0');
   EXPECT_EQ(str1, str2);
+}
 
+TEST(TestMyString, TestConcat) {
+  MyString str1("111");
+  MyString str2("222");
+
+  MyString str3 = str1 + "aaa";
+  EXPECT_EQ(str3, "111aaa");
+  str3 = str1 + str3;
+  EXPECT_EQ(str3, "111111aaa");
+}
+/*
+TEST(TestMyString, TestAdd) {
+  MyString str1("111");
+  MyString str2("222");
+
+  str1.Add("222");
+  EXPECT_EQ(str1, "111222");
+  str1.Add(str2);
+  EXPECT_EQ(str1, "111222");
 
 }
+*/
