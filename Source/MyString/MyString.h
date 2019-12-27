@@ -18,7 +18,7 @@ public:
   void Add(const MyString& a_value);
 
   void Insert(size_t a_index, const char* a_value);
-  void Insert(const char* a_value);
+  void Insert(size_t a_index, const MyString& a_value);
 
   const char& operator[] (size_t pos) const;
   friend std::ostream& operator<<(std::ostream& a_stream, MyString& a_value);
@@ -32,6 +32,6 @@ public:
 
 private:
 	char* m_p_str;
-	rsize_t m_size;
+	size_t m_size = 0;
 };
 

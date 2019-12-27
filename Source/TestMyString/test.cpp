@@ -40,6 +40,10 @@ TEST(TestMyString, Init) {
   EXPECT_EQ(str1[4], '5');
   EXPECT_EQ(str1[5], '\0');
   EXPECT_EQ(str1, str2);
+
+  MyString str3;
+  EXPECT_EQ(str3, "");
+  EXPECT_EQ(str3.size(), 0);
 }
 
 TEST(TestMyString, TestPlus) {
@@ -50,6 +54,9 @@ TEST(TestMyString, TestPlus) {
   str3 = str3 + "sss";
   EXPECT_EQ(str3, "111aaasss");
   str3 = str1 + str3;
+  EXPECT_EQ(str3, "111111aaasss");
+
+  str3 = str3 + "";
   EXPECT_EQ(str3, "111111aaasss");
 }
 
@@ -65,6 +72,27 @@ TEST(TestMyString, TestAdd) {
   str1.Add("333");
   EXPECT_EQ(str1, "111222333");
 
+  str1.Add("");
+  EXPECT_EQ(str1, "111222333");
+
   str1.Add(str2);
   EXPECT_EQ(str1, "111222333222");
+
+  str1.Add("");
+  EXPECT_EQ(str1, "111222333222");
+
+}
+
+TEST(TestMyString, TestInsert) {
+  MyString str1;
+  MyString str2;
+
+  str1.Insert(0, "1");
+  EXPECT_EQ(str1, "1");
+
+  str1.Insert(1, "2");
+  EXPECT_EQ(str1, "2");
+
+  str1.Insert(0, "3");
+  EXPECT_EQ(str1, "2");
 }
