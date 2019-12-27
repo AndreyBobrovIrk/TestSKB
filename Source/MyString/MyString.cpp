@@ -4,7 +4,7 @@
 
 MyString::MyString()
 {
-	m_p_str = NULL;
+	m_p_str = new char(0);
 	m_size = 0;
 }
 
@@ -26,7 +26,7 @@ size_t MyString::size() {
 
 MyString::~MyString()
 {
-	delete[] m_p_str;
+	delete m_p_str;
 }
 
 const char& MyString::operator[] (size_t a_pos) const
@@ -38,14 +38,33 @@ const char& MyString::operator[] (size_t a_pos) const
   return *(m_p_str + a_pos);
 }
 
-//MyString& Insert(int a_index, const char* a_value)
-//{
-//}
+void MyString::Add(const char* a_value)
+{
+  m_size += strlen(a_value) + 1;
 
-//MyString& Insert(int a_index, const MyString& a_value)
-//{
-//
-//}
+  char* tmp = new char[m_size];
+  _snprintf_s(tmp, m_size, m_size, "%s%s", m_p_str, a_value);
+
+  delete m_p_str;
+  m_p_str = new char[m_size];
+
+  strcpy_s(m_p_str, m_size, tmp);
+  delete tmp;
+}
+
+void MyString::Add(const MyString& a_value)
+{
+  Add(a_value.m_p_str);
+}
+
+void Insert(int a_index, const char* a_value)
+{
+}
+
+void Insert(int a_index, const MyString& a_value)
+{
+
+}
 
 std::ostream& operator << (std::ostream& a_stream, MyString &a_value)
 {
@@ -78,11 +97,11 @@ bool operator!=(const MyString& lhs, const char* rhs)
 
 MyString& MyString::operator=(const MyString& a_obj)
 {
-	if (&a_obj == this) {
-        return *this;
-	}
+  if (&a_obj == this) {
+    return *this;
+  }
 
-  delete[] m_p_str;
+  delete m_p_str;
   m_size = strlen(a_obj.m_p_str) + 1;
   m_p_str = new char[m_size];
   strcpy_s(m_p_str, m_size, a_obj.m_p_str);
@@ -92,12 +111,10 @@ MyString& MyString::operator=(const MyString& a_obj)
 MyString& MyString::operator+(const char* a_value)
 {
   size_t size = m_size + strlen(a_value);
-
   char* tmp = new char[size];
-
   _snprintf_s(tmp, size, size, "%s%s", m_p_str, a_value);
-
   MyString *result = new MyString(tmp);
+  delete tmp;
   return *result;
 }
 

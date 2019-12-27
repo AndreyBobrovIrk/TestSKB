@@ -14,11 +14,11 @@ public:
 
 	~MyString();
 
-//  void Insert(const char* a_value);
-//  void Insert(const MyString& a_value);
+  void Add(const char* a_value);
+  void Add(const MyString& a_value);
 
-//  MyString& Insert(size_t a_index, const char* a_value);
-//  MyString& Insert(const char* a_value);
+  void Insert(size_t a_index, const char* a_value);
+  void Insert(const char* a_value);
 
   const char& operator[] (size_t pos) const;
   friend std::ostream& operator<<(std::ostream& a_stream, MyString& a_value);

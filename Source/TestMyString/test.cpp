@@ -42,24 +42,29 @@ TEST(TestMyString, Init) {
   EXPECT_EQ(str1, str2);
 }
 
-TEST(TestMyString, TestConcat) {
+TEST(TestMyString, TestPlus) {
   MyString str1("111");
   MyString str2("222");
 
   MyString str3 = str1 + "aaa";
-  EXPECT_EQ(str3, "111aaa");
+  str3 = str3 + "sss";
+  EXPECT_EQ(str3, "111aaasss");
   str3 = str1 + str3;
-  EXPECT_EQ(str3, "111111aaa");
+  EXPECT_EQ(str3, "111111aaasss");
 }
-/*
+
 TEST(TestMyString, TestAdd) {
-  MyString str1("111");
+  MyString str1;
   MyString str2("222");
 
+  str1.Add("111");
+  EXPECT_EQ(str1, "111");
   str1.Add("222");
   EXPECT_EQ(str1, "111222");
-  str1.Add(str2);
-  EXPECT_EQ(str1, "111222");
 
+  str1.Add("333");
+  EXPECT_EQ(str1, "111222333");
+
+  str1.Add(str2);
+  EXPECT_EQ(str1, "111222333222");
 }
-*/
