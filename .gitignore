@@ -11,10 +11,9 @@ Source/MyStringTest/Debug/
 Source/MyStringTest/Release/
 Source/packages/
 Source/TestMyString/x64/
-Source/TestMyString/x32/
+Source/TestMyString/Win32/
 Source/TestConsole/TestConsole.vcxproj.user
 Source/TestMyString/TestMyString.vcxproj.user
-
 Source/TestConsole/x64/
 Source/TestConsole/Win32/
 Source/TestConsole/Debug/

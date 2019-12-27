@@ -5,20 +5,30 @@
 #include "pch.h"
 #include "../MyString/MyString.h"
 
+void print_string(MyString& a_value)
+{
+	std::cout << "String: " << a_value << std::endl;
+	std::cout << "Size: " << a_value.size() << std::endl;
+	std::cout << std::endl;
+}
+
 int main()
 {
 	MyString str1("String1 ");
 
-	std::cout << "String: " << str1 << std::endl;
-	std::cout << std::endl;
+  print_string(str1);
 
-	MyString str2 = str1;
+  for (int i = 0; i <= str1.size() - 1; ++i) {
+    std::cout << "ch " << i << ": " << str1[i] << std::endl;
+  }
 
-//	MyString str3 = str1 + str2;
+  std::cout << std::endl;
 
-	std::cout << "String: " << str1 << std::endl;
-	std::cout << "Size: " << str1.size() - 1 << std::endl;
-	std::cout << std::endl;
+//	MyString str2 = "123";
+//
+////	MyString str3 = str1 + str2;
+//
+//  print_string(str2);
 
 	system("pause");
 	return 0;
