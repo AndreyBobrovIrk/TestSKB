@@ -20,6 +20,8 @@ public:
   void Insert(size_t a_index, const char* a_value);
   void Insert(size_t a_index, const MyString& a_value);
 
+  void Remove(size_t a_index, size_t a_count);
+
   const char& operator[] (size_t pos) const;
   friend std::ostream& operator<<(std::ostream& a_stream, MyString& a_value);
 	friend bool operator==(const MyString& lhs, const MyString& rhs);

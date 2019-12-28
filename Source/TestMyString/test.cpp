@@ -53,6 +53,7 @@ TEST(TestMyString, TestPlus) {
   MyString str3 = str1 + "aaa";
   str3 = str3 + "sss";
   EXPECT_EQ(str3, "111aaasss");
+
   str3 = str1 + str3;
   EXPECT_EQ(str3, "111111aaasss");
 
@@ -91,8 +92,29 @@ TEST(TestMyString, TestInsert) {
   EXPECT_EQ(str1, "1");
 
   str1.Insert(1, "2");
-  EXPECT_EQ(str1, "2");
+  EXPECT_EQ(str1, "12");
 
   str1.Insert(0, "3");
-  EXPECT_EQ(str1, "2");
+  EXPECT_EQ(str1, "312");
+
+  str1.Insert(0, "");
+  EXPECT_EQ(str1, "312");
+
+  str1.Insert(3, "");
+  EXPECT_EQ(str1, "312");
+
+  str2 = "123";
+  str1.Insert(0, str2);
+  EXPECT_EQ(str1, "123312");
+
+  str2 = "aaa";
+  str1.Insert(6, str2);
+  EXPECT_EQ(str1, "123312aaa");
+}
+
+TEST(TestMyString, TestRemove) {
+  MyString str1("1234567890");
+  MyString str2;
+
+
 }
