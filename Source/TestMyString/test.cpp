@@ -128,7 +128,7 @@ TEST(TestMyString, TestInsert) {
 
 TEST(TestMyString, TestRemove) {
   MyString str1("1234567890");
-/*
+
   str1.Remove(0, 1);
   EXPECT_EQ(str1, "234567890");
   EXPECT_EQ(str1.size(), 9);
@@ -140,7 +140,6 @@ TEST(TestMyString, TestRemove) {
   str1.Remove(3, 3);
   EXPECT_EQ(str1, "23489");
   EXPECT_EQ(str1.size(), 5);
-  */
 }
 
 TEST(TestMyString, Clear) {
@@ -150,10 +149,18 @@ TEST(TestMyString, Clear) {
   EXPECT_EQ(str1.size(), 0);
 }
 
-TEST(TestMyString, Delete) {
-//  MyString str1("1234567890");
+TEST(TestMyString, Remove) {
+  MyString str1("1234567890");
 
-  //str1.Remove(0, 1);
-  //EXPECT_EQ(str1, "234567890");
-  //EXPECT_EQ(str1.size(), 9);
+  str1.Remove(0, 1);
+  EXPECT_EQ(str1, "234567890");
+  EXPECT_EQ(str1.size(), 9);
+
+  str1.Remove(8, 1);
+  EXPECT_EQ(str1, "23456789");
+  EXPECT_EQ(str1.size(), 8);
+
+  str1.Remove(3, 3);
+  EXPECT_EQ(str1, "23489");
+  EXPECT_EQ(str1.size(), 5);
 }
