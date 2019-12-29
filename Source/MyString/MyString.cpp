@@ -203,3 +203,15 @@ MyString& MyString::operator+(MyString& a_value)
 {
   return operator+(a_value.m_p_str);
 }
+
+MyString& MyString::operator+=(const char* a_value)
+{
+  m_p_str = operator+(a_value).m_p_str;
+  return *this;
+}
+
+MyString& MyString::operator+=(MyString& a_value)
+{
+  m_p_str = operator+(a_value).m_p_str;
+  return *this;
+}

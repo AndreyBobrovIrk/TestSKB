@@ -164,3 +164,16 @@ TEST(TestMyString, Remove) {
   EXPECT_EQ(str1, "23489");
   EXPECT_EQ(str1.size(), 5);
 }
+
+TEST(TestMyString, TestPlusEqual) {
+  MyString str1("111");
+  MyString str2("222");
+
+  str1 += "aaa";
+  EXPECT_EQ(str1, "111aaa");
+  EXPECT_EQ(str1.size(), 6);
+
+  str1 += str2;
+  EXPECT_EQ(str1, "111aaa222");
+  EXPECT_EQ(str1.size(), 9);
+}
