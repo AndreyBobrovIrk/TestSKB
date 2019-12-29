@@ -22,7 +22,9 @@ public:
 
   void Remove(size_t a_index, size_t a_count);
 
-  const char& operator[] (size_t pos) const;
+  void Clear();
+
+  const char& operator[] (size_t pos);
   friend std::ostream& operator<<(std::ostream& a_stream, MyString& a_value);
 	friend bool operator==(const MyString& lhs, const MyString& rhs);
   friend bool operator!=(const MyString& lhs, const MyString& rhs);
@@ -34,6 +36,5 @@ public:
 
 private:
 	char* m_p_str;
-	size_t m_size = 0;
 };
 
